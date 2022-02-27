@@ -6,13 +6,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText editText;
-    ImageButton btn;
-    String text;
+    private EditText editText;
+    private ImageButton btn;
+    public static String text;
 
+    //url
+    public static String Request_URL = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +28,9 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Request_URL = "https://www.googleapis.com/books/v1/volumes?q=";
                 text = editText.getText().toString();
+                Request_URL+=text;
 
             }
         });
