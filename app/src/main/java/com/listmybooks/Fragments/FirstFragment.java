@@ -65,7 +65,7 @@ public class FirstFragment extends Fragment  implements LoaderManager.LoaderCall
                 bookDataClass currentBook = mAdapter.getItem(i);
 
                 //convert the string url into a URI object to pass into the intent constructor
-                Uri bookUri = Uri.parse(currentBook.getURL());
+                Uri bookUri = Uri.parse(currentBook.getMlink());
 
                 //create a new intent to view the earthquake URI
                 Intent websiteIntent = new Intent(Intent.ACTION_VIEW, bookUri);

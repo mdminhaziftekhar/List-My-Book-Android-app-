@@ -8,12 +8,14 @@ public class bookDataClass {
     private String mbookDate;
     private String mImageLink;
     private String URL = Request_URL;
+    private String mlink;
 
-    public  bookDataClass(String mImageLink, String mbookTitle, String mbookAuthor, String mbookDate){
+    public  bookDataClass(String mImageLink, String mbookTitle, String mbookAuthor, String mbookDate, String mlink){
         this.mImageLink = mImageLink;
         this.mbookTitle = mbookTitle;
         this.mbookAuthor = mbookAuthor;
         this.mbookDate = mbookDate;
+        this.mlink = mlink;
     }
 
     public String getmImageLink() {
@@ -34,5 +36,9 @@ public class bookDataClass {
 
     public String getURL() {
         return URL;
+    }
+
+    public String getMlink() {
+        return mlink;
     }
 }

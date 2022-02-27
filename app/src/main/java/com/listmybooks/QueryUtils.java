@@ -3,7 +3,9 @@ package com.listmybooks;
 import android.text.TextUtils;
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -95,6 +97,42 @@ public class QueryUtils {
 
         //Parse JSON
         try{
+            //Create JSON Object
+            JSONObject baseJsonResponse = new JSONObject(bookJson);
+
+            //extract JSONArray assosiated with the key items
+            JSONArray itemsArray = baseJsonResponse.optJSONArray("items");
+
+            //For each position
+            for(int i = 0; i<itemsArray.length(); i++){
+                //get a single book at position i
+                JSONObject currentBook = itemsArray.optJSONObject(i);
+
+                //get volumeInfo JSONObject
+                JSONObject volumeInfo = currentBook.optJSONObject("volumeInfo");
+
+                //Extract String value Title
+                String title = volumeInfo.optString("title");
+
+                //get array named author
+                JSONArray authorArray = volumeInfo.optJSONArray("authors");
+
+                //get authors name
+                String author = authorArray.optString(0);
+
+                //publish date
+                String date = volumeInfo.optString("publishedDate");
+
+                //Object called imageLinks
+                JSONObject imageLinks = volumeInfo.optJSONObject("imageLinks");
+                //string thumbnail
+                String image = imageLinks.optString("thumbnail");
+
+                //Preview link
+                String link = volumeInfo.optString("canonicalVolumeLink");
+
+                books.add(new bookDataClass(image, title, author, date, link));
+            }
 
         } catch (JSONException e){
             Log.e("QueryUtils", "Problem parsing the data", e);
