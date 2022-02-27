@@ -56,6 +56,7 @@ public class DataAdapter extends ArrayAdapter<bookDataClass> {
         return  listItemView;
     }
 
+    //Class for loading image from url
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
         ImageView bmImage;
 

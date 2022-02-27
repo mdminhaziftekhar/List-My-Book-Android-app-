@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     public static String text;
 
     //url
-    public static String Request_URL = "";
+    public static String Request_URL = "https://www.googleapis.com/books/v1/volumes?q=books";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
