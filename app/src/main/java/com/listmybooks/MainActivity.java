@@ -1,12 +1,15 @@
 package com.listmybooks;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import com.listmybooks.Fragments.FirstFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     public static String text;
 
     //url
-    public static String Request_URL = "https://www.googleapis.com/books/v1/volumes?q=books";
+    public static String Request_URL = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
                 text = editText.getText().toString();
                 Request_URL+=text;
 
+                FirstFragment firstFragment = new FirstFragment();
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.linear, firstFragment);
+                transaction.commit();
             }
         });
 

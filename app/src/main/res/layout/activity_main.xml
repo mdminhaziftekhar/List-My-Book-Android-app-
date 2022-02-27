@@ -37,29 +37,12 @@
 
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/list"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent">
-    </ListView>
-
-    <!-- Loading indicator is only shown before the first load -->
-    <ProgressBar
-        android:id="@+id/loading_indicator"
-        style="@style/Widget.AppCompat.ProgressBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center|center_horizontal|center_vertical"
-        />
-
-    <TextView
-        android:id="@+id/EmptyText"
+    <LinearLayout
+        android:id="@+id/linear"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
-        android:gravity="center|clip_vertical|center_horizontal"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        />
+        android:orientation="vertical"
+        >
+    </LinearLayout>
 
 </LinearLayout>
