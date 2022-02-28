@@ -34,9 +34,9 @@ public class bookDataClass {
         return mbookDate;
     }
 
-    public String getURL() {
-        return URL;
-    }
+//    public String getURL() {
+//        return URL;
+//    }
 
     public String getMlink() {
         return mlink;

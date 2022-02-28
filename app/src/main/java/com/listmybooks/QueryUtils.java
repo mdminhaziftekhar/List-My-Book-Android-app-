@@ -101,21 +101,21 @@ public class QueryUtils {
             JSONObject baseJsonResponse = new JSONObject(bookJson);
 
             //extract JSONArray assosiated with the key items
-            JSONArray itemsArray = baseJsonResponse.optJSONArray("items");
+            JSONArray itemsArray = baseJsonResponse.getJSONArray("items");
 
             //For each position
             for(int i = 0; i<itemsArray.length(); i++){
                 //get a single book at position i
-                JSONObject currentBook = itemsArray.optJSONObject(i);
+                JSONObject currentBook = itemsArray.getJSONObject(i);
 
                 //get volumeInfo JSONObject
-                JSONObject volumeInfo = currentBook.optJSONObject("volumeInfo");
+                JSONObject volumeInfo = currentBook.getJSONObject("volumeInfo");
 
                 //Extract String value Title
                 String title = volumeInfo.optString("title");
 
                 //get array named author
-                JSONArray authorArray = volumeInfo.optJSONArray("authors");
+                JSONArray authorArray = volumeInfo.getJSONArray("authors");
 
                 //get authors name
                 String author = authorArray.optString(0);
@@ -124,7 +124,7 @@ public class QueryUtils {
                 String date = volumeInfo.optString("publishedDate");
 
                 //Object called imageLinks
-                JSONObject imageLinks = volumeInfo.optJSONObject("imageLinks");
+                JSONObject imageLinks = volumeInfo.getJSONObject("imageLinks");
                 //string thumbnail
                 String image = imageLinks.optString("thumbnail");
 

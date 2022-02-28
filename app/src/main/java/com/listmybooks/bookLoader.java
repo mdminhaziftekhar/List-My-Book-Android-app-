@@ -1,5 +1,7 @@
 package com.listmybooks;
 
+import static com.listmybooks.MainActivity.Request_URL;
+
 import android.content.Context;
 
 import androidx.annotation.NonNull;
@@ -27,9 +29,9 @@ public class bookLoader extends AsyncTaskLoader<List<bookDataClass>> {
     @Override
     public List<bookDataClass> loadInBackground() {
        //Don't perform the request if there are no urls, or first one is null
-        if(mUrl == null) return null;
+        if(Request_URL == null) return null;
 
-        List<bookDataClass> booksResult = QueryUtils.fetchBookData(mUrl);
+        List<bookDataClass> booksResult = QueryUtils.fetchBookData(Request_URL);
         return booksResult;
     }
 }

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -18,7 +19,9 @@ public class MainActivity extends AppCompatActivity {
     public static String text;
 
     //url
-    public static String Request_URL = "https://www.googleapis.com/books/v1/volumes?q=books";
+    public static String Request_URL = "";
+
+    //public static String Request_URL = "https://www.googleapis.com/books/v1/volumes?q=books";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +36,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Request_URL = "https://www.googleapis.com/books/v1/volumes?q=";
                 text = editText.getText().toString();
-                Request_URL+=text;
+                Request_URL = Request_URL+text;
+
+                Log.v("Request URL", Request_URL);
 
                 FirstFragment firstFragment = new FirstFragment();
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();

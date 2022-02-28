@@ -37,7 +37,7 @@ public class FirstFragment extends Fragment  implements LoaderManager.LoaderCall
 
     private DataAdapter mAdapter;
 
-    private TextView mEmptytextView = getView().findViewById(R.id.EmptyText);
+//    private TextView mEmptytextView = getView().findViewById(R.id.EmptyText);
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,8 +48,8 @@ public class FirstFragment extends Fragment  implements LoaderManager.LoaderCall
         //Find a reference to the listview
         ListView bookListView = (ListView) view.findViewById(R.id.listNew);
 
-        //EmptyView
-        bookListView.setEmptyView(mEmptytextView);
+//        //EmptyView
+//        bookListView.setEmptyView(mEmptytextView);
 
         //a new adapter that takes empty list of books
         mAdapter = new DataAdapter(getContext(), new ArrayList<bookDataClass>());
@@ -58,22 +58,22 @@ public class FirstFragment extends Fragment  implements LoaderManager.LoaderCall
         bookListView.setAdapter(mAdapter);
 
         //setting on item click listener on the listview
-        bookListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                //Find the current book that was clicked on
-                bookDataClass currentBook = mAdapter.getItem(i);
-
-                //convert the string url into a URI object to pass into the intent constructor
-                Uri bookUri = Uri.parse(currentBook.getMlink());
-
-                //create a new intent to view the earthquake URI
-                Intent websiteIntent = new Intent(Intent.ACTION_VIEW, bookUri);
-
-                //send the intent to launch a new activity
-                startActivity(websiteIntent);
-            }
-        });
+//        bookListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                //Find the current book that was clicked on
+//                bookDataClass currentBook = mAdapter.getItem(i);
+//
+//                //convert the string url into a URI object to pass into the intent constructor
+//                Uri bookUri = Uri.parse(currentBook.getMlink());
+//
+//                //create a new intent to view the earthquake URI
+//                Intent websiteIntent = new Intent(Intent.ACTION_VIEW, bookUri);
+//
+//                //send the intent to launch a new activity
+//                startActivity(websiteIntent);
+//            }
+//        });
 
         // Get a reference to the LoaderManager, in order to interact with loaders.
         // Initialize the loader. Pass in the int ID constant defined above and pass in null for
@@ -93,8 +93,8 @@ public class FirstFragment extends Fragment  implements LoaderManager.LoaderCall
     @Override
     public void onLoadFinished(@NonNull Loader<List<bookDataClass>> loader, List<bookDataClass> data) {
         //Hide loading indicator
-        View loadingIndicator = getView().findViewById(R.id.loading_indicator);
-        loadingIndicator.setVisibility(View.GONE);
+//        View loadingIndicator = getView().findViewById(R.id.loading_indicator);
+//        loadingIndicator.setVisibility(View.GONE);
 
         //Clear the adapter of previous data
         mAdapter.clear();
@@ -105,19 +105,19 @@ public class FirstFragment extends Fragment  implements LoaderManager.LoaderCall
         }
 
         //check if network is connected or not
-        ConnectivityManager cm = (ConnectivityManager) getContext().getSystemService(getContext().CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        if(activeNetwork == null){
-            //state that there is no internet connection
-            mEmptytextView.setText("No Internet Connection Found :( ");
-        } else if(activeNetwork != null && activeNetwork.isConnected()){
-            //There is internet but the list is empty
-            mEmptytextView.setText("No book data found :( ");
-        }
-        else{
-            //set the empty state text to display
-            mEmptytextView.setText("No Data found");
-        }
+//        ConnectivityManager cm = (ConnectivityManager) getContext().getSystemService(getContext().CONNECTIVITY_SERVICE);
+//        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+//        if(activeNetwork == null){
+//            //state that there is no internet connection
+//            mEmptytextView.setText("No Internet Connection Found :( ");
+//        } else if(activeNetwork != null && activeNetwork.isConnected()){
+//            //There is internet but the list is empty
+//            mEmptytextView.setText("No book data found :( ");
+//        }
+//        else{
+//            //set the empty state text to display
+//            mEmptytextView.setText("No Data found");
+//        }
 
     }
 
