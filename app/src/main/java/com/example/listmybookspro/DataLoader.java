@@ -1,5 +1,7 @@
 package com.example.listmybookspro;
 
+import static com.example.listmybookspro.MainActivity.mUrlRequestGoogleBooks;
+
 import android.content.Context;
 import android.util.Log;
 
@@ -17,6 +19,7 @@ public class DataLoader extends AsyncTaskLoader<List<NewBook>> {
     /**
      * Query URL
      */
+    //private String mUrl;
     private String mUrl;
 
     /**

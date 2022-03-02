@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Book Listing App</string>
-    <string name="search_button_name">search</string>
-    <string name="no_internet_connection">No internet connection.</string>
-    <string name="no_books">No books found.</string>
-    <string name="search_view_hint">Enter a book title</string>
-    <string name="search_hint">Enter a title</string>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="SearchView" parent="Widget.AppCompat.SearchView">
+        <item name="queryHint">@string/search_view_hint</item>
+    </style>
 </resources>
