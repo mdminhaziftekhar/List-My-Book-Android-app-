@@ -107,17 +107,17 @@ public final class QueryUtils {
                 // For a given book, extract the JSONObject associated with the
                 // key called "saleInfo", which represents a list of region and object RetailPrice{amount, currency}
                 JSONObject saleInfo = currentBook.getJSONObject("saleInfo");
-                JSONObject retailPrice = saleInfo.getJSONObject("retailPrice");
+//                JSONObject retailPrice = saleInfo.getJSONObject("retailPrice");
 
 
                 // Extract the value for the key called "title"
-                String title = volumeInfo.getString("title");
+                String title = volumeInfo.optString("title");
 
                 // Extract the value for the key called "language"
-                String language = volumeInfo.getString("language");
+                String language = volumeInfo.optString("language");
 
                 // Extract String URL of specific cover
-                String coverImageUrl = imageLinks.getString("smallThumbnail");
+                String coverImageUrl = imageLinks.optString("smallThumbnail");
 
                 // Extract the value for the key called "smallThumbnail"
                 // Using REGEX and StringBuilder
@@ -133,19 +133,19 @@ public final class QueryUtils {
                 }
 
                 // Extract the value for the key called "amount"
-                double amount = retailPrice.getDouble("amount");
+//                double amount = retailPrice.optDouble("amount");
 
                 // Extract the value for the key called "currencyCode"
-                String currency = retailPrice.getString("currencyCode");
+//                String currency = retailPrice.optString("currencyCode");
 
 
 
                 // Extract the value for the key called "buyLink"
-                String buyLink = (String) saleInfo.get("buyLink");
+                String buyLink = volumeInfo.optString("canonicalVolumeLink");
 
                 // Create a new {@link Book} object with the title, author, coverImageUrl, price, currency and language
                 // and url from the JSON response.
-                NewBook bookItem = new NewBook(title, author, coverImageUrl, amount, currency, language, buyLink);
+                NewBook bookItem = new NewBook(title, author, coverImageUrl, buyLink);
 
                 // Add the new {@link Book} to the list of booksList.
                 books.add(bookItem);

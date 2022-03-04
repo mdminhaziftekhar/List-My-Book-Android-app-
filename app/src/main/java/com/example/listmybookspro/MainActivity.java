@@ -6,6 +6,7 @@ import android.app.LoaderManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
+import android.media.Image;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -15,6 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -43,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     /**
      * URL for books data from the Google Books API
      */
-    public static String mUrlRequestGoogleBooks = "";
+    private String mUrlRequestGoogleBooks = "";
     /**
      * TextView that is displayed when the list is empty
      */
@@ -192,6 +194,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         sb.append("https://www.googleapis.com/books/v1/volumes?q=").append(searchValue).append("&filter=paid-ebooks&maxResults=40");
         mUrlRequestGoogleBooks = sb.toString();
 
+        Log.v("URL IS : ", mUrlRequestGoogleBooks);
+
         return mUrlRequestGoogleBooks;
     }
 
@@ -202,7 +206,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         updateQueryUrl(mSearchViewField.getQuery().toString());
 
-        return new DataLoader(getApplicationContext(), mUrlRequestGoogleBooks);
+        return new BookLoader(getApplicationContext(), mUrlRequestGoogleBooks);
 
     }
 
@@ -211,7 +215,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 //        Log.i("There is no instance", ": Created new one loader at the beginning!");
 //        // Create a new loader for the given URL
 //        updateQueryUrl(mSearchViewField.getQuery().toString());
-//        return new DataLoader(this, mUrlRequestGoogleBooks);
+//        return new BookLoader(this, mUrlRequestGoogleBooks);
 //    }
 
 

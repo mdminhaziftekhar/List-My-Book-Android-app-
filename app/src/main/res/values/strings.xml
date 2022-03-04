@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Book Listing App</string>
+    <string name="app_name">List my book</string>
     <string name="search_button_name">search</string>
     <string name="no_internet_connection">No internet connection.</string>
     <string name="no_books">No books found.</string>
