@@ -1,18 +1,20 @@
 package com.example.listmybookspro;
 
+
+import android.content.AsyncTaskLoader;
 import android.content.Context;
 import android.util.Log;
 
-import androidx.loader.content.AsyncTaskLoader;
-
 import java.util.List;
 
-public class DataLoader extends AsyncTaskLoader<List<NewBook>> {
+
+
+public class BookLoader extends AsyncTaskLoader<List<NewBook>> {
 
     /**
      * Tag for log messages
      */
-    private static final String LOG_TAG = DataLoader.class.getName();
+    private static final String LOG_TAG = BookLoader.class.getName();
 
     /**
      * Query URL
@@ -20,12 +22,12 @@ public class DataLoader extends AsyncTaskLoader<List<NewBook>> {
     private String mUrl;
 
     /**
-     * Constructs a new {@link DataLoader}.
+     * Constructs a new {@link BookLoader}.
      *
      * @param context of the activity
      * @param url     to load data from
      */
-    public DataLoader(Context context, String url) {
+    public BookLoader(Context context, String url) {
         super(context);
         mUrl = url;
 
@@ -53,5 +55,4 @@ public class DataLoader extends AsyncTaskLoader<List<NewBook>> {
         return books;
 
     }
-
 }

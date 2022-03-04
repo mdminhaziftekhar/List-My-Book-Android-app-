@@ -47,19 +47,15 @@ public class DataAdapter extends ArrayAdapter<NewBook> {
         TextView titleBookTextView = (TextView) listItemView.findViewById(R.id.book_title);
         TextView authorBookTextView = (TextView) listItemView.findViewById(R.id.author);
         ImageView coverImageView = (ImageView) listItemView.findViewById(R.id.cover_image);
-        TextView priceBookTextView = (TextView) listItemView.findViewById(R.id.book_price);
-        TextView languageCode = (TextView) listItemView.findViewById(R.id.country_code);
-        TextView currencyCode = (TextView) listItemView.findViewById(R.id.currency_code);
+
 
         // Set proper value in each fields
         assert currentBook != null;
         titleBookTextView.setText(currentBook.getTitle());
         authorBookTextView.setText(currentBook.getAuthor());
-        Picasso.with(getContext()).load(currentBook.getImageUrl()).into(coverImageView);
-        priceBookTextView.setText(String.valueOf(formatPrice(currentBook.getPrice())));
-        languageCode.setText(currentBook.getLanguage());
-        currencyCode.setText(currentBook.getCurrency());
-
+        //Picasso.with(getContext()).load(currentBook.getImageUrl()).into(coverImageView);
+        Picasso.get().load(currentBook.getImageUrl()).into(coverImageView);
+        Log.v("ImageLink : ", currentBook.getImageUrl());
         Log.i(LOG_TAG, "ListView has been returned");
         return listItemView;
 
